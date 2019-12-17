@@ -30,4 +30,7 @@ sudo chmod 755 ~/cloudWraith/docker/dockerCheck.sh
 spineCheck="$(~/cloudWraith/docker/dockerCheck.sh)";
 echo Shelled health check:
 echo $spineCheck
-echo 
+echo
+
+# prepare for code deployment
+sudo chmod 755 ~/pull.sh
