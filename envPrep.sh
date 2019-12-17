@@ -3,12 +3,11 @@
 
 # install linux dependencies
 sudo apt-get update
-sudo apt-get install -f \
-	apt-transport-https \
-	ca-certificates \
-	curl \
-	software-properties-common \
-	gnupg-agent
+sudo apt-get install apt-transport-https -f
+sudo apt-get install ca-certificates -f
+sudo apt-get install curl -f
+sudo apt-get install software-properties-common -f
+sudo apt-get install gnupg-agent -f
 
 # install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -17,7 +16,9 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 sudo apt-get update
-sudo apt-get install -f docker-ce docker-ce-cli containerd.io
+sudo apt-get install docker-ce -f
+sudo apt-get install docker-ce-cli -f
+sudo apt-get install containerd.io -f
 echo Initial health check:
 sudo docker run hello-world
 echo 
