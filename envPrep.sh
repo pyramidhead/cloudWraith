@@ -24,7 +24,7 @@ echo
 
 # validate docker from another shell
 sudo usermod -aG docker $USER
-chmod 755 ~/cloudWraith/docker/dockerCheck.sh
+sudo chmod 755 ~/cloudWraith/docker/dockerCheck.sh
 spineCheck="$(~/cloudWraith/docker/dockerCheck.sh)";
 echo Shelled health check:
 echo $spineCheck
