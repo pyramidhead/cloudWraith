@@ -24,7 +24,8 @@ sudo docker run hello-world
 echo 
 
 # validate docker from another shell
-sudo usermod -aG docker $USER
+echo Current user: $USER
+sudo useradd -g docker -d /home/$USER -s /bin/bash -m $USER
 sudo chmod 755 ~/cloudWraith/docker/dockerCheck.sh
 spineCheck="$(~/cloudWraith/docker/dockerCheck.sh)";
 echo Shelled health check:
