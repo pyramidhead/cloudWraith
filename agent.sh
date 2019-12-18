@@ -19,7 +19,10 @@ done
 docker run -d --rm --name scalpel -it -p 443:443 remnux/metasploit
 docker ps -a
 
+# install and validate ruby
+docker exec scalpel ruby -v
+
 # validate metasploit service availability
-sleep 5
-metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
-echo $metasploitHealth
+# sleep 5
+# metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
+# echo $metasploitHealth
