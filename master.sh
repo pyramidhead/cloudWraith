@@ -9,7 +9,11 @@ docker ps -a;
 
 # validate mongo service availability
 mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit session")"
-echo $mongoHealth
+while -z $mongoHealth do;
+	echo "Gave mongo coffee. Give him a minute."
+	sleep 5;
+done;
+echo "Mongo is awake."
 # until nc -z -v -w30 $satchelHost 27017; do
 #	sleep 5;
 #	echo "Poking mongo. He's growling."
