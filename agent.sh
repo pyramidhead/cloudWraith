@@ -21,5 +21,5 @@ docker ps -a
 
 # validate metasploit service availability
 sleep 5
-metasploitHealth="$(docker exec scalpel msf > banner | grep "payloads")"
+metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
 echo $metasploitHealth
