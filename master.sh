@@ -8,8 +8,9 @@ docker run -d --rm --name satchel -d mongo:4.0.4;
 docker ps -a;
 
 # validate mongo service availability
-sleep 5
 mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit session")"
 while [ -z "$mongoHealth" ]; do
-	sleep 5
+	sleep 1
+	echo "Mongo not awake yet."
+	mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit session")"
 done
