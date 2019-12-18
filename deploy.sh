@@ -1,6 +1,6 @@
 #!/bin/bash
 # deployment script
 
-~/reset.sh
-~/pull.sh
-~/agent.sh
+~/cloudWraith/reset.sh
+~/cloudWraith/pull.sh
+~/cloudWraith/agent.sh
