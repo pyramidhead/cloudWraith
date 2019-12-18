@@ -20,3 +20,5 @@ docker run -d --rm -it -p 443:443 remnux/metasploit
 docker ps -a
 
 # validate metasploit service availability
+sleep 5
+metasploitHealth="$(docker exec goes here)" | grep "someString")"
