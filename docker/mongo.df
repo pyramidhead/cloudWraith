@@ -1,3 +1,5 @@
 # dockerFile for mongo service
 
 FROM mongo:4.0.4
+RUN  -d --rm --name satchel -d mongo:4.0.4
+RUN ps -a
