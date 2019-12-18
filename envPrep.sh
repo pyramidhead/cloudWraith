@@ -33,4 +33,4 @@ echo $spineCheck
 echo
 
 # prepare for code deployment
-sudo chmod 755 ~/pull.sh
+sudo chmod 755 ~/cloudWraith/pull.sh
