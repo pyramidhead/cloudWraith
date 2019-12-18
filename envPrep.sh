@@ -6,6 +6,7 @@ sudo apt-get update
 sudo apt-get -f install apt-transport-https
 sudo apt-get -f install ca-certificates
 sudo apt-get -f install curl
+sudo apt-get -f install mongodb-clients
 
 # install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
