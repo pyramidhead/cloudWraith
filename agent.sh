@@ -20,7 +20,11 @@ docker run -d --rm --name scalpel -it -p 443:443 remnux/metasploit
 docker ps -a
 
 # install and validate ruby
-docker exec scalpel ruby -v
+rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
+echo $rubyHealth
+if [[ $rubyHealth =~ "file not found" ]]; do
+	# things
+done
 
 # validate metasploit service availability
 # sleep 5
