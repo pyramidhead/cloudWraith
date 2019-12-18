@@ -6,7 +6,6 @@ sudo apt-get update
 sudo apt-get install apt-transport-https -f
 sudo apt-get install ca-certificates -f
 sudo apt-get install curl -f
-sudo apt-get install software-properties-common -f
 sudo apt-get install gnupg-agent -f
 
 # install docker
