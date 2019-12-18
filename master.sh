@@ -14,3 +14,5 @@ until [[ $mongoHealth =~ "Implicit" ]]; do
 	sleep 1
 	mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 done
+
+# start metasploit container and validate in docker
