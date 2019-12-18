@@ -11,8 +11,6 @@ docker ps -a;
 sleep 5
 mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 until [[ $mongoHealth =~ "Implicit" ]]; do
-	echo "Mongo not awake yet."
 	sleep 1
 	mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 done
-echo "Mongo awake."
