@@ -21,4 +21,5 @@ docker ps -a
 
 # validate metasploit service availability
 sleep 5
-metasploitHealth="$(docker exec goes here)" | grep "someString")"
+metasploitHealth="$(docker exec goes here | grep "someString")"
+echo $metasploitHealth
