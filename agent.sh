@@ -3,6 +3,7 @@
 # prerequisites: docker
 
 # start mongo container and validate in docker
+# docker build -f ~/cloudWraith/docker/mongo.df
 docker pull mongo:4.0.4
 docker run -d --rm --name satchel -d mongo:4.0.4
 docker ps -a
