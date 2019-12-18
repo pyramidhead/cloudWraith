@@ -28,5 +28,7 @@ sudo apt-get -f install docker-ce
 echo Initial health check:
 sudo docker run hello-world
 
-# prepare for code deployment
+# final linux side steps; group membership and file permissions
+sudo groupadd docker
+sudo usermod -aG docker $USER
 sudo chmod 755 ~/cloudWraith/pull.sh
