@@ -20,8 +20,8 @@ docker run -d --rm --name scalpel -it -p 443:443 remnux/metasploit
 docker ps -a
 
 # install metasploit dependencies
-docker exec scalpel sudo apt-get update
-docker exec scalpel sudo apt-get -f install ruby-full
+docker exec scalpel sudo apt-get download ruby-full
+docker exec scalpel sudo apt-get install -f ruby-full
 docker exec scalpel ruby --version
 
 # validate metasploit service availability
