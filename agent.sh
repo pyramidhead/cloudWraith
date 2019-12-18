@@ -22,7 +22,7 @@ docker ps -a
 # install and validate ruby
 rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
-if [[ $rubyHealth =~ "file not found" ]]; do
+if [[ $rubyHealth =~ "file not found" ]]; then
 	# things
 done
 
