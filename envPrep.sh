@@ -21,17 +21,6 @@ sudo apt-get install docker-ce-cli -f
 sudo apt-get install containerd.io -f
 echo Initial health check:
 sudo docker run hello-world
-echo 
-
-# validate docker from another shell
-echo Current user: $USER
-sudo usermod -a -G docker $USER
-sudo chown root:docker /var/run/docker.sock
-sudo chmod 755 ~/cloudWraith/docker/dockerCheck.sh
-spineCheck="$(~/cloudWraith/docker/dockerCheck.sh)";
-echo Shelled health check:
-echo $spineCheck
-echo
 
 # prepare for code deployment
 sudo chmod 755 ~/cloudWraith/pull.sh
