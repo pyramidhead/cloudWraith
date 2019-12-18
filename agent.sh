@@ -24,7 +24,7 @@ rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
 	# things
-done
+fi
 
 # validate metasploit service availability
 # sleep 5
