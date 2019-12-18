@@ -22,9 +22,9 @@ sudo apt-get -f install cgroupfs-mount
 sudo apt-get -f install libltdl7
 sudo apt-get -f install pigz
 echo Running docker package installs
-sudo apt-get -f install docker-ce
 sudo apt-get -f install docker-ce-cli
 sudo apt-get -f install containerd.io
+sudo apt-get -f install docker-ce
 echo Initial health check:
 sudo docker run hello-world
 
