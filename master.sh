@@ -18,4 +18,4 @@ echo $mongoHealth
 	# another until loop for success case
 		# sleep 5;
 		# echo "Gave mongo coffee. Give him a moment."
-done;
+# done;
