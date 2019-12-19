@@ -20,14 +20,15 @@ docker run -d --rm --name scalpel -it -p 443:443 remnux/metasploit
 docker ps -a
 
 # install and validate ruby
+docker exec scalpel apt-get remove gnupg
+docker exec scalpel /usr/bin/gpg2 /usr/bin/gpg
 docker exec scalpel apt-get update && install -fy debugedit gnupg2 libelf1 libnspr4 libnss3 libnss3-nssdb librpm3 librpmbuild3 librpmio3 librpmsign1 libsqlite0 python-libxml2 python-pycurl python-rpm python-sqlite python-sqlitecachec python-urlgrabber rpm rpm-common rpm2cpio
 rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
 	# ruby install
 	docker exec scalpel apt-get -fy install yum yum-utils
-	docker exec scalpel curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
-	docker exec scalpel curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
+	docker exec scalpel gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 	docker exec scalpel curl -L get.rvm.io | bash -s stable
 fi
 # ruby validate
