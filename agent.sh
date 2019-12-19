@@ -24,6 +24,8 @@ rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
 	# ruby install
+	docker exec scalpel apt-get update
+	docker exec scalpel apt-get -fy install snapd
 	docker exec scalpel snap install ruby --classic
 	docker ps -a
 fi
