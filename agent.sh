@@ -24,6 +24,7 @@ rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
 	# ruby install
+	docker exec scalpel apt-get update
 	docker exec scalpel apt-get -fy install fontconfig-config fonts-dejavu-core libfontconfig1 libfreetype6 libruby1.9.1 libruby1.9.1-dbg libtcl8.5 libtcltk-ruby1.9.1 libtk8.5 libxft2 libxrender1 libxss1 ri1.9.1 ruby ruby1.9.1 ruby1.9.1-dev ruby1.9.1-examples ruby1.9.1-full x11-common
 	docker exec scalpel apt-get -fy install ruby-full
 fi
