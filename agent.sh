@@ -41,7 +41,7 @@ fi
 # validate metasploit service availability
 if [[ $rubyDown == 1 ]]; then
 	echo "Metasploit down because of ruby dependency - fix that."
-elif [[ $rubyHealth != *"revision"* ]]; then
+elif [[ $rubyHealth == *"revision"* ]]; then
 	echo "We're going to validate metasploit right here."
 fi
 # metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
