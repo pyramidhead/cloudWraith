@@ -25,6 +25,7 @@ echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
 	# ruby install
 	docker exec scalpel apt-get update
+	docker exec scalpel mkdir $PWD/grub
 	docker exec scalpel grub-install $PWD/grub
 	docker exec scalpel apt-get -fy install snapd
 	docker exec scalpel PATH=$PATH:/snap/bin
