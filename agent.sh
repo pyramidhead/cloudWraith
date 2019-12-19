@@ -35,6 +35,7 @@ if [[ $rubyHealth =~ "revision" ]]; then
 	echo "Ruby installed."
 elif [[ $rubyHealth != *"revision"* ]]; then
 	echo "Ruby install failed. Metasploit functions disabled. Troubleshooting required."
+	rubyDown=1
 fi
 
 # validate metasploit service availability
