@@ -25,14 +25,10 @@ echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
 	# ruby install
 	docker exec scalpel apt-get update
-	docker exec scalpel mkdir $PWD/grub
-	docker exec scalpel grub-install $PWD/grub
 	docker exec scalpel apt-get -fy install snapd
 	docker exec scalpel PATH=$PATH:/snap/bin
 	docker exec scalpel snap install ruby --classic
 fi
-docker ps -a
-
 # ruby validate
 rubyHealth="$(docker exec scalpel ruby -v | grep "revision")"
 echo $rubyHealth
@@ -42,6 +38,7 @@ elif [[ $rubyHealth != *"revision"* ]]; then
 	echo "Ruby install failed. Metasploit functions disabled. Troubleshooting required."
 	rubyDown=1
 fi
+docker ps -a
 
 # validate metasploit service availability
 if [[ $rubyDown == 1 ]]; then
