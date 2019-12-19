@@ -27,7 +27,9 @@ if [[ $rubyHealth =~ "file not found" ]]; then
 	# ruby install
 	docker exec scalpel apt-get -fy install yum
 	docker exec scalpel yum update
-	docker exec scalpel yum install ruby
+	docker exec scalpel yum install centos-release-scl
+	docker exec scalpel yum-config-manager --enable rhel-server-rhscl-7-rpms
+	docker exec scalpel yum install rh-ruby24
 fi
 # ruby validate
 rubyHealth="$(docker exec scalpel ruby -v | grep "revision")"
