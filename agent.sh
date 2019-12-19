@@ -38,6 +38,5 @@ elif [[ $rubyHealth != *"revision"* ]]; then
 fi
 
 # validate metasploit service availability
-# sleep 5
 # metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
 # echo $metasploitHealth
