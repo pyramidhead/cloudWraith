@@ -25,8 +25,7 @@ echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
 	# ruby install
 	docker exec scalpel apt-get update
-	docker exec scalpel apt-get -fy install ruby-full
-
+	docker exec apt -fy install ruby
 	docker ps -a
 fi
 # ruby validate
