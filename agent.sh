@@ -27,7 +27,7 @@ rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
 	# ruby install
-	docker exec scalpel apt-get -fy install yum yum-utils
+	docker exec scalpel apt-get -y install yum yum-utils
 	# sometimes this call fails and stalls, may need handling for that
 	docker exec scalpel gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 	# what we need here is to write trust for the imported keys
