@@ -29,8 +29,9 @@ if [[ $rubyHealth =~ "file not found" ]]; then
 	docker exec scalpel apt-get -fy install snapd
 	docker exec scalpel PATH=$PATH:/snap/bin
 	docker exec scalpel snap install ruby --classic
-	docker ps -a
 fi
+docker ps -a
+
 # ruby validate
 rubyHealth="$(docker exec scalpel ruby -v | grep "revision")"
 echo $rubyHealth
