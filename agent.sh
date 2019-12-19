@@ -23,7 +23,8 @@ docker ps -a
 rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
-	# things
+	# ruby install
+	docker exec scalpel apt-get -f install ruby-full
 fi
 
 # validate metasploit service availability
