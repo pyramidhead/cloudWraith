@@ -20,7 +20,9 @@ docker run -d --rm --name scalpel -it -p 443:443 remnux/metasploit
 docker ps -a
 
 # install and validate ruby
-docker exec scalpel apt-get update && install -fy debugedit gnupg2 libelf1 libnspr4 libnss3 libnss3-nssdb librpm3 librpmbuild3 librpmio3 librpmsign1 libsqlite0 python-libxml2 python-pycurl python-rpm python-sqlite python-sqlitecachec python-urlgrabber rpm rpm-common rpm2cpio
+docker exec scalpel apt-get update
+docker exec scalpel apt-get install -y gnupg2 
+docker exec scalpel apt-get install -y debugedit libelf1 libnspr4 libnss3 libnss3-nssdb librpm3 librpmbuild3 librpmio3 librpmsign1 libsqlite0 python-libxml2 python-pycurl python-rpm python-sqlite python-sqlitecachec python-urlgrabber rpm rpm-common rpm2cpio
 rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
