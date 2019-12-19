@@ -33,6 +33,8 @@ if [[ $rubyHealth =~ "file not found" ]]; then
 	# what we need here is to write trust for the imported keys
 	docker exec scalpel gpg --list-keys --fingerprint | grep "409B6B1796C275462A1703113804BB82D39DC0E3" -B 1 | head -1 | tr -d '[:space:]'|awk 'BEGIN { FS = "=" } ; { print $2 }' :6: | gpg --import-ownertrust;
 	docker exec scalpel gpg --list-keys --fingerprint | grep "7D2BAF1CF37B13E2069D6956105BD0E739499BDB" -B 1 | head -1 | tr -d '[:space:]'|awk 'BEGIN { FS = "=" } ; { print $2 }' :6: | gpg --import-ownertrust;
+	docker exec scalpel curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+	docker exec scalpel curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 	docker exec scalpel curl -L get.rvm.io | bash -s stable
 fi
 # ruby validate
