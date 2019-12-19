@@ -33,6 +33,8 @@ rubyHealth="$(docker exec scalpel ruby -v | grep "revision")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "revision" ]]; then
 	echo "Ruby installed."
+elif [[ $rubyHealth != *"revision"* ]]; then
+	echo "Ruby install failed. Metasploit functions disabled. Troubleshooting required."
 fi
 
 # validate metasploit service availability
