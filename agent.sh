@@ -15,6 +15,8 @@ until [[ $mongoHealth =~ "Implicit" ]]; do
 	mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 done
 
+# start openssh container and validate in docker
+
 # start metasploit container and validate in docker
 docker run -d --rm --name scalpel -it -p 443:443 remnux/metasploit
 docker ps -a
