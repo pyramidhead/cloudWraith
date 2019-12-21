@@ -15,12 +15,9 @@ until [[ $mongoHealth =~ "Implicit" ]]; do
 	mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 done
 
-# start openssh container and validate in docker
-
 # start metasploit container and validate in docker
 docker run -d --rm --name scalpel -it -p 443:443 remnux/metasploit
 docker ps -a
-
 # install ruby
 docker exec scalpel apt-get update
 docker exec scalpel apt-get install -y gnupg2 
@@ -38,9 +35,10 @@ if [[ $rubyHealth =~ "file not found" ]]; then
 	docker exec scalpel curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 	docker exec scalpel curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 	docker exec scalpel curl -L get.rvm.io | bash -s stable
+	docker exec scalpel PATH=$PATH:/home/pyramid/.rvm/bin
+	docker exec scalpel rvm
 fi
 # validate ruby
-docker exec scalpel PATH=$PATH:/home/pyramid/.rvm/bin
 rubyHealth="$(docker exec scalpel ruby -v | grep "revision")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "revision" ]]; then
@@ -50,7 +48,6 @@ elif [[ $rubyHealth != *"revision"* ]]; then
 	rubyDown=1
 fi
 docker ps -a
-
 # validate metasploit service availability
 if [[ $rubyDown == 1 ]]; then
 	echo "Metasploit down because of ruby dependency - fix that."
