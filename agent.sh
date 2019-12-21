@@ -16,45 +16,9 @@ until [[ $mongoHealth =~ "Implicit" ]]; do
 done
 
 # start metasploit container and validate in docker
-docker run -d --rm --name scalpel -it -p 443:443 remnux/metasploit
-docker ps -a
-# install ruby
-docker exec scalpel apt-get update
-docker exec scalpel apt-get install -y gnupg2 
-docker exec scalpel apt-get install -y debugedit libelf1 libnspr4 libnss3 libnss3-nssdb librpm3 librpmbuild3 librpmio3 librpmsign1 libsqlite0 python-libxml2 python-pycurl python-rpm python-sqlite python-sqlitecachec python-urlgrabber rpm rpm-common rpm2cpio
-rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
-echo $rubyHealth
-if [[ $rubyHealth =~ "file not found" ]]; then
-	# ruby dependencies
-	docker exec scalpel apt-get -y install yum yum-utils
-	# sometimes this call fails and stalls, may need handling for that
-	docker exec scalpel gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-	# what we need here is to write trust for the imported keys
-	docker exec scalpel gpg --list-keys --fingerprint | grep "409B6B1796C275462A1703113804BB82D39DC0E3" -B 1 | head -1 | tr -d '[:space:]'|awk 'BEGIN { FS = "=" } ; { print $2 }' :6: | gpg --import-ownertrust;
-	docker exec scalpel gpg --list-keys --fingerprint | grep "7D2BAF1CF37B13E2069D6956105BD0E739499BDB" -B 1 | head -1 | tr -d '[:space:]'|awk 'BEGIN { FS = "=" } ; { print $2 }' :6: | gpg --import-ownertrust;
-	docker exec scalpel curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-	docker exec scalpel curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
-	docker exec scalpel curl -L get.rvm.io | bash -s stable
-	docker exec scalpel PATH=$PATH:/home/pyramid/.rvm/bin
-	docker exec scalpel rvm
-fi
-# validate ruby
-rubyHealth="$(docker exec scalpel ruby -v | grep "revision")"
-echo $rubyHealth
-if [[ $rubyHealth =~ "revision" ]]; then
-	echo "Ruby installed."
-elif [[ $rubyHealth != *"revision"* ]]; then
-	echo "Ruby install failed. Metasploit functions disabled. Troubleshooting required."
-	rubyDown=1
-fi
-docker ps -a
-# validate metasploit service availability
-if [[ $rubyDown == 1 ]]; then
-	echo "Metasploit down because of ruby dependency - fix that."
-elif [[ $rubyHealth == *"revision"* ]]; then
-	# validate metasploit health
-	metasploitHealth="$(docker exec scalpel msfupdate)"
-fi
+# validate metasploit health
+metasploitHealth="$(docker exec scalpel msfupdate)"
+
 # metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
 # echo $metasploitHealth
 
