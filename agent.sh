@@ -26,7 +26,7 @@ docker exec scalpel apt-get install -y debugedit libelf1 libnspr4 libnss3 libnss
 rubyHealth="$(docker exec scalpel ruby -v | grep "file not found")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "file not found" ]]; then
-	# ruby install
+	# ruby dependencies
 	docker exec scalpel apt-get -y install yum yum-utils
 	# sometimes this call fails and stalls, may need handling for that
 	docker exec scalpel gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
@@ -38,6 +38,7 @@ if [[ $rubyHealth =~ "file not found" ]]; then
 	docker exec scalpel curl -L get.rvm.io | bash -s stable
 fi
 # validate ruby
+docker exec scalpel PATH=$PATH:/home/pyramid/.rvm/bin
 rubyHealth="$(docker exec scalpel ruby -v | grep "revision")"
 echo $rubyHealth
 if [[ $rubyHealth =~ "revision" ]]; then
