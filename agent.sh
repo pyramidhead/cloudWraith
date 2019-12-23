@@ -15,10 +15,13 @@ until [[ $mongoHealth =~ "Implicit" ]]; do
 	mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 done
 
-# start metasploit container and validate in docker
+# start metasploit container in a kali VM and validate in docker
 docker pull kalilinux/kali-linux-docker
 docker run -d --rm --name scalpel -d kalilinux/kali-linux-docker
 docker ps -a
+# postgresql is a metasploit requirement and needs kickstart in kali
+docker exec scalpel service posgresql start
+
 # validate metasploit health
 metasploitHealth="$(docker exec scalpel msfupdate)"
 
