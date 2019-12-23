@@ -17,7 +17,7 @@ done
 
 # start metasploit container in a kali VM and validate in docker
 docker pull kalilinux/kali-linux-docker
-docker run -d --rm --name scalpel -d kalilinux/kali-linux-docker
+docker run -d --rm --name scalpel -d kalilinux/kali-linux-docker && tail -f /dev/null
 docker ps -a
 # postgresql is a metasploit requirement and needs kickstart in kali
 docker exec scalpel service posgresql start
