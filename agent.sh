@@ -17,10 +17,13 @@ done
 
 # start metasploit container in a kali VM and validate in docker
 docker pull kalilinux/kali-linux-docker
-docker run -d --rm --name scalpel -d kalilinux/kali-linux-docker && tail -f /dev/null
+docker image build -t kaliDockerfile
+# docker run -d --rm --name scalpel -d kalilinux/kali-linux-docker
 docker ps -a
+# determine default pwd
+docker exec scalpel pwd
 # postgresql is a metasploit requirement and needs kickstart in kali
-docker exec scalpel service posgresql start
+# docker exec scalpel service posgresql start
 
 # validate metasploit health
 metasploitHealth="$(docker exec scalpel msfupdate)"
