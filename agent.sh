@@ -16,8 +16,9 @@ until [[ $mongoHealth =~ "Implicit" ]]; do
 done
 
 # start metasploit container in a kali VM and validate in docker
+## have removed --rm flag on this container, that may need cleanup
 # docker image build -t scalpel ./kali
-docker run -d --rm --name scalpel ./kali
+docker container run -d --name scalpel ./kali
 docker ps -a
 # determine default pwd
 docker exec scalpel pwd
