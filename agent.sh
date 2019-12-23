@@ -17,7 +17,7 @@ done
 
 # start metasploit container in a kali VM and validate in docker
 docker pull kalilinux/kali-linux-docker
-docker image build -t kaliDockerfile
+docker image build -t kalidockerfile
 # docker run -d --rm --name scalpel -d kalilinux/kali-linux-docker
 docker ps -a
 # determine default pwd
