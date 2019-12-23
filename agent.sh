@@ -17,6 +17,7 @@ done
 
 # start metasploit container and validate in docker
 docker pull kalilinux/kali-linux-docker
+docker run -d --rm --name scalpel -d kalilinux/kali-linux-docker
 # validate metasploit health
 metasploitHealth="$(docker exec scalpel msfupdate)"
 
