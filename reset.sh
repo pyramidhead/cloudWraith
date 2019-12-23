@@ -7,3 +7,4 @@ docker system prune -af
 git reset --hard
 chmod 755 pull.sh
 chmod 755 reset.sh
+chmod 755 deploy.sh
