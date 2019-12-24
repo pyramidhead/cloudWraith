@@ -33,4 +33,4 @@ RUN set -x \
     && apt-get -y install postgresql postgresql-contrib \
     && apt-get clean \
     && service postgresql start \
-    && screen -dS session1 sleep 99999
+    && screen -d -m sleep 99999
