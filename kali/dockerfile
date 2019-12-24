@@ -27,9 +27,9 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
-    && apt-get autoremove -f \
-    && apt-get install -f libutempter0 \
-    && apt-get install -f screen \
+    && apt-get -f autoremove \
+    && apt-get -f install libutempter0 \
+    && apt-get -f install screen \
     && apt-get clean
 CMD ["service postgresql start"]
 CMD ["screen -dS session1 sleep 99999"]
