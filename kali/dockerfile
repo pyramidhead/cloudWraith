@@ -32,5 +32,5 @@ RUN set -x \
     && apt-get -y install screen \
     && apt-get -y install postgresql postgresql-contrib \
     && apt-get clean \
-    && service postgresql start
-CMD ["screen -dS session1 sleep 99999"]
+    && service postgresql start \
+    && screen -dS session1 sleep 99999
