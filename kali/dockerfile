@@ -28,8 +28,9 @@ RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
     && apt-get -y autoremove \
-    && apt-get -f install libutempter0 \
-    && apt-get -f install screen \
+    && apt-get -y install libutempter0 \
+    && apt-get -y install screen \
+    && apt-get -y install postgresql postgresql-contrib \
     && apt-get clean \
     && service postgresql start
 CMD ["screen -dS session1 sleep 99999"]
