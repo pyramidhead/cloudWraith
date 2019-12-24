@@ -24,8 +24,7 @@ docker image build -t drawer ./kali
 docker inspect drawer
 docker run -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
 docker ps -a
-# postgresql is a metasploit requirement and needs kickstart in kali
-# docker exec scalpel service posgresql start
+# postgresql is a metasploit requirement and needs kickstart in kali; this is done in dockerfile and validated here
 
 # validate metasploit health
 metasploitHealth="$(docker exec scalpel msfupdate)"

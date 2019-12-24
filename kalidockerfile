@@ -28,8 +28,4 @@ RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
     && apt-get clean
-# CMD [""]
-CMD ["bash"]
-CMD ["pwd"]
-CMD ["echo $PATH"]
-# CMD [""]
+# CMD ["service postgresql start"]
