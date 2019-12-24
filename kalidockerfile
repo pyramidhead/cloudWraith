@@ -29,3 +29,5 @@ RUN set -x \
     && apt-get -yqq dist-upgrade \
     && apt-get clean
 CMD ["bash"]
+CMD ["pwd"]
+CMD ["echo $PATH"]
