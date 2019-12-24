@@ -19,7 +19,7 @@ done
 docker image build -t drawer ./kali
 docker inspect scalpel
 # docker run -d --rm -it --name scalpel ./kali
-docker run --rm -it scalpel ./kali
+docker run --rm -it drawer --name scalpel ./kali
 docker ps -a
 # determine default pwd
 docker exec scalpel pwd
