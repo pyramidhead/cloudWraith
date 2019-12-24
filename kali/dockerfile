@@ -29,4 +29,4 @@ RUN set -x \
     && apt-get -yqq dist-upgrade \
     && apt-get clean
 CMD ["service postgresql start"]
-CMD ["/bin/bash"]
+CMD ["screen -dS session1 sleep 99999"]
