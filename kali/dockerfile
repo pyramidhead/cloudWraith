@@ -27,7 +27,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
-    && apt-get -f autoremove \
+    && apt-get -y autoremove \
     && apt-get -f install libutempter0 \
     && apt-get -f install screen \
     && apt-get clean
