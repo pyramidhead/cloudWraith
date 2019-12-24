@@ -31,3 +31,5 @@ RUN set -x \
 CMD ["bash"]
 CMD ["pwd"]
 CMD ["echo $PATH"]
+# we need some way to externally validate; per kali rules that means exposing something
+# CMD [""]
