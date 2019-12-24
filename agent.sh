@@ -3,6 +3,8 @@
 # prerequisites: docker
 
 # create persistent shared storage
+docker volume create backpack
+docker volume inspect backpack
 
 # start mongo container and validate in docker
 docker pull mongo:4.0.4
