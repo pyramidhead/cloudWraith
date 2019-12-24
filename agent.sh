@@ -2,6 +2,8 @@
 # master script to operate a containerized pentesting architecture organized around dorking threat vectors identified with metasploit
 # prerequisites: docker
 
+# create persistent shared storage
+
 # start mongo container and validate in docker
 docker pull mongo:4.0.4
 docker run --rm --name satchel -d mongo:4.0.4
