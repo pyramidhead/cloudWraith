@@ -22,7 +22,7 @@ done
 # start metasploit container in a kali VM and validate in docker
 docker image build -t drawer ./kali
 docker inspect drawer
-docker run --rm --mount source=backpack,target=~/cloudWraith --name scalpel drawer
+docker run --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
 docker ps -a
 # postgresql is a metasploit requirement and needs kickstart in kali
 # docker exec scalpel service posgresql start
