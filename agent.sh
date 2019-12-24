@@ -19,7 +19,7 @@ done
 docker image build -t drawer ./kali
 docker inspect drawer
 # docker run -d --rm -it --name scalpel ./kali
-docker run --rm -it --name scalpel drawer
+docker run --rm --name scalpel drawer
 docker ps -a
 # postgresql is a metasploit requirement and needs kickstart in kali
 # docker exec scalpel service posgresql start
