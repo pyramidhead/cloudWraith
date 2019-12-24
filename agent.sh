@@ -17,7 +17,7 @@ done
 
 # start metasploit container in a kali VM and validate in docker
 docker image build -t drawer ./kali
-docker inspect scalpel
+docker inspect drawer
 # docker run -d --rm -it --name scalpel ./kali
 docker run --rm -it drawer --name scalpel ./kali
 docker ps -a
