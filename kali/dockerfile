@@ -27,6 +27,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
+    && apt autoremove \
+    && apt-get install -f libutempter0 \
     && apt-get install -f screen \
     && apt-get clean
 CMD ["service postgresql start"]
