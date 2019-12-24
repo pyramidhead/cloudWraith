@@ -28,8 +28,8 @@ RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
     && apt-get clean
+# CMD [""]
 CMD ["bash"]
 CMD ["pwd"]
 CMD ["echo $PATH"]
-# we need some way to externally validate; per kali rules that means exposing something
 # CMD [""]
