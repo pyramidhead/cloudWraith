@@ -8,15 +8,15 @@ docker volume inspect backpack
 
 # start mongo container and validate in docker
 docker pull mongo:4.0.4
-docker run --rm --name satchel -d mongo:4.0.4
+docker run --rm --name legdrop -d mongo:4.0.4
 docker ps -a
 
 # validate mongo service availability
 sleep 1
-mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
+mongoHealth="$(docker exec legdrop mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 until [[ $mongoHealth =~ "Implicit" ]]; do
 	sleep 1
-	mongoHealth="$(docker exec satchel mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
+	mongoHealth="$(docker exec legdrop mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 done
 
 # start metasploit container in a kali VM and validate in docker
