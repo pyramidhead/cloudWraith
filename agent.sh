@@ -2,11 +2,11 @@
 # master script to operate a containerized pentesting architecture organized around dorking threat vectors identified with metasploit
 # prerequisites: docker
 
-# create persistent shared storage
+# build persistent shared storage
 docker volume create backpack
 docker volume inspect backpack
 
-# start mongo container and validate in docker
+# build mongo container
 docker pull mongo:4.0.4
 docker run -d --rm --name legdrop mongo:4.0.4
 docker ps -a
@@ -19,7 +19,7 @@ until [[ $mongoHealth =~ "Implicit" ]]; do
 	mongoHealth="$(docker exec legdrop mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 done
 
-# start kali VM and validate in docker
+# build kali container
 docker image build -t drawer ./kali
 docker inspect drawer
 docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name maglite drawer
@@ -27,6 +27,7 @@ docker ps -a
 
 # build remnux metasploit container
 docker run -t -d --rm -p 443:443 --mount source=backpack,target=/usr/local/cloudWraith --name scalpel remnux/metasploit
+docker ps -a
 
 # validate metasploit health
 # metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
