@@ -31,7 +31,7 @@ done
 # build remnux metasploit container
 docker image build -t drawer ./metasploit
 docker inspect drawer
-docker run -t -d --rm -p 443:443 --mount source=backpack,target=/usr/local/cloudWraith --name scalpel remnux/metasploit
+docker run -t -d --rm -p 443:443 --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
 docker ps -a
 metasploitHealth="$(docker exec scalpel msfconsole)"
 echo $metasploitHealth
