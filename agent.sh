@@ -24,7 +24,7 @@ docker image build -t drawer ./kali
 docker inspect drawer
 docker run -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
 docker ps -a
-docker exec scalpel /bin/bash > /dev/null 2>&1
+# docker exec scalpel /bin/bash > /dev/null 2>&1
 
 # validate postgresql service from dockerfile
 

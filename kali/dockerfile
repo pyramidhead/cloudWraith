@@ -30,4 +30,6 @@ RUN set -x \
     && apt-get -y install postgresql postgresql-contrib \
     && apt-get clean \
     && service postgresql start \
-    && /bin/bash &
+    && /bin/bash & \
+    && jobs \
+    && disown
