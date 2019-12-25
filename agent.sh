@@ -22,9 +22,12 @@ done
 # start kali VM and validate in docker
 docker image build -t drawer ./kali
 docker inspect drawer
-docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
+docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name maglite drawer
 docker ps -a
 
+# build remnux metasploit container
+docker run -t -d --rm -p 443:443 --mount source=backpack,target=/usr/local/cloudWraith --name scalpel remnux/metasploit
+
 # validate metasploit health
-metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
+# metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
 # metasploitHealth="$(docker exec scalpel msfupdate)"
