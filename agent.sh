@@ -19,11 +19,13 @@ until [[ $mongoHealth =~ "Implicit" ]]; do
 	mongoHealth="$(docker exec legdrop mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 done
 
-# start kali VM and validate in docker
+# start kali VM, validate in docker, and spawn shell session
 docker image build -t drawer ./kali
 docker inspect drawer
 docker run -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
 docker ps -a
+docker exec scalpel /bin/bash > /dev/null 2>&1
+
 # validate postgresql service from dockerfile
 
 # validate metasploit health

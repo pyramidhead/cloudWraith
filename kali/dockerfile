@@ -30,5 +30,4 @@ RUN set -x \
     && apt-get -y install postgresql postgresql-contrib \
     && apt-get clean \
     && service postgresql start \
-    && sleep 5 \
     && /bin/bash > /dev/null 2>&1
