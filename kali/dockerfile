@@ -27,4 +27,6 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
-    && apt-get clean
+    && apt-get -y install postgresql postgresql-contrib \
+    && apt-get clean \
+    && service postgresql start
