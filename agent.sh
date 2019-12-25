@@ -24,7 +24,8 @@ docker image build -t drawer ./kali
 docker inspect drawer
 docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name maglite drawer
 docker ps -a
-docker attach maglite
+kaliHealth="$(docker attach maglite)"
+echo $kaliHealth
 
 # build remnux metasploit container
 docker run -t -d --rm -p 443:443 --mount source=backpack,target=/usr/local/cloudWraith --name scalpel remnux/metasploit
