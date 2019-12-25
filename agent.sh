@@ -20,19 +20,12 @@ done
 # build and validate kali container
 docker image build -t drawer ./kali
 docker inspect drawer
-docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name maglite drawer
+docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
 docker ps -a
-kaliHealth="$(docker exec maglite cat /etc/os-release | grep "ID_LIKE")"
+kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	sleep 1
-	kaliHealth="$(docker exec maglite cat /etc/os-release | grep "ID_LIKE")"
+	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 
-# build remnux metasploit container
-docker image build -t drawer ./metasploit
-docker inspect drawer
-docker run -t -d --rm -p 443:443 --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
-docker ps -a
-metasploitHealth="$(docker exec scalpel msfconsole)"
-echo $metasploitHealth
 # metasploitHealth="$(docker exec scalpel msfupdate)"
