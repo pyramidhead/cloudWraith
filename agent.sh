@@ -22,7 +22,7 @@ done
 # build kali container
 docker image build -t drawer ./kali
 docker inspect drawer
-docker run -t -d --rm -p 22:22 --mount source=backpack,target=/usr/local/cloudWraith --name maglite drawer
+docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name maglite drawer
 docker ps -a
 
 # validate an ssh to kali container
