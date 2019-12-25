@@ -22,9 +22,8 @@ done
 # start kali VM, validate in docker, and spawn shell session
 docker image build -t drawer ./kali
 docker inspect drawer
-docker run -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
+docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
 docker ps -a
-# docker exec scalpel tail -f /dev/null
 
 # validate postgresql service from dockerfile
 
