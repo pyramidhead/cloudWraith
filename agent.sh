@@ -30,7 +30,6 @@ docker ps -a
 # build remnux metasploit container
 docker run -t -d --rm -p 443:443 --mount source=backpack,target=/usr/local/cloudWraith --name scalpel remnux/metasploit
 docker ps -a
-
-# validate metasploit health
-# metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
+metasploitHealth="$(docker exec scalpel msf > help | grep "Description")"
+echo $metasploitHealth
 # metasploitHealth="$(docker exec scalpel msfupdate)"
