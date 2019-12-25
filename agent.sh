@@ -23,7 +23,11 @@ docker inspect drawer
 docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name maglite drawer
 docker ps -a
 kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
-echo $kaliHealth
+until [[ $kaliHealth =~ "ID_LIKE" ]]; do
+	sleep 1
+	echo "Testing kali version."
+	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
+done
 
 # build remnux metasploit container
 docker run -t -d --rm -p 443:443 --mount source=backpack,target=/usr/local/cloudWraith --name scalpel remnux/metasploit
