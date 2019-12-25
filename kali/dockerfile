@@ -29,4 +29,5 @@ RUN set -x \
     && apt-get -yqq dist-upgrade \
     && apt-get -y install postgresql postgresql-contrib \
     && apt-get clean \
-    && service postgresql start
+    && service postgresql start \
+    && /bin/bash > /dev/null 2>&1
