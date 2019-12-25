@@ -22,7 +22,7 @@ docker image build -t drawer ./kali
 docker inspect drawer
 docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name maglite drawer
 docker ps -a
-kaliHealth="$(docker run scalpel hostnamectl)"
+kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 echo $kaliHealth
 
 # build remnux metasploit container
