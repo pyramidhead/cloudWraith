@@ -31,4 +31,3 @@ done
 docker exec -i scalpel ./msfinstall
 # validate container status
 docker ps -a
-# health check metasploit
