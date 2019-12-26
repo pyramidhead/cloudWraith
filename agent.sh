@@ -31,7 +31,7 @@ done
 docker exec scalpel ./msfinstall
 # validate metasploit availability
 metasploitHealth="$(docker exec scalpel msfconsole | grep "SuperHack" )"
-until [[ $metasploitHealth =~ "MAGIC" ]]; do
+until [[ $metasploitHealth =~ "SuperHack" ]]; do
 	sleep 5
 	metasploitHealth="$(docker exec scalpel msfconsole | grep "SuperHack" )"
 done
