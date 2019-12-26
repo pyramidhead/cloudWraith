@@ -30,6 +30,10 @@ done
 # not sure why metasploit install doesn't work from the dockerfile; doing it from here
 docker exec scalpel ./msfinstall
 # validate metasploit availability
-docker exec scalpel msfconsole
+metasploitHealth="$(docker exec scalpel msfconsole | grep "MAGIC" )"
+until [[ $metasploitHealth =~ "MAGIC" ]]; do
+	sleep 1
+	metasploitHealth="$(docker exec scalpel msfconsole | grep "MAGIC" )"
+done
 # validate container status
 docker ps -a
