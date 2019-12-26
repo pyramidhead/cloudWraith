@@ -28,6 +28,7 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 # install metasploit
-docker exec scalpel ./msfinstall
+docker exec -i scalpel ./msfinstall
 # validate container status
 docker ps -a
+# health check metasploit
