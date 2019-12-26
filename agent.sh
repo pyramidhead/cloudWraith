@@ -31,7 +31,11 @@ done
 docker exec -i scalpel ./msfinstall
 # validate container status
 docker ps -a
-# we should write a metasploit health check here but we haven't yet
+# health check metasploit
+metasploitHealth="$(docker exec scalpel msfconsole)"
+while [[ -z $metasploitHealth ]]; do
+	sleep 1
+done
 
 # build a node.js container that runs a web interface; call it wristpad
 
