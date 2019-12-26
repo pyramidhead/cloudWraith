@@ -1,5 +1,4 @@
 FROM kalilinux/kali-rolling
-# Metadata params
 ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL

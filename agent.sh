@@ -1,5 +1,5 @@
 #!/bin/bash
-# master script to operate a containerized pentesting architecture organized around dorking threat vectors identified with metasploit
+# master script to operate a containerized pentesting architecture utilizing various resources to identify vulnerabilities
 # prerequisites: docker
 
 # build persistent shared storage
