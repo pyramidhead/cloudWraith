@@ -27,13 +27,7 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	sleep 1
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
-# not sure why metasploit install doesn't work from the dockerfile; doing it from here
+# install metasploit
 docker exec scalpel ./msfinstall
-# validate metasploit availability
-metasploitHealth="$(docker exec scalpel msfconsole | grep "SuperHack" )"
-until [[ $metasploitHealth =~ "SuperHack" ]]; do
-	sleep 5
-	metasploitHealth="$(docker exec scalpel msfconsole | grep "SuperHack" )"
-done
 # validate container status
 docker ps -a
