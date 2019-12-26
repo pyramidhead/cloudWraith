@@ -31,3 +31,8 @@ done
 docker exec -i scalpel ./msfinstall
 # validate container status
 docker ps -a
+# we should write a metasploit health check here but we haven't yet
+
+# build a node.js container that runs a web interface; call it wristpad
+
+# build a node.js container that runs our natual language search engine; call it brainpal
