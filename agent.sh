@@ -32,7 +32,7 @@ docker exec scalpel ./msfinstall
 # validate metasploit availability
 metasploitHealth="$(docker exec scalpel msfconsole | grep "MAGIC" )"
 until [[ $metasploitHealth =~ "MAGIC" ]]; do
-	sleep 1
+	sleep 5
 	metasploitHealth="$(docker exec scalpel msfconsole | grep "MAGIC" )"
 done
 # validate container status
