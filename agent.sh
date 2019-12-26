@@ -29,3 +29,4 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 done
 # validate metasploit install from dockerfile
 docker exec scalpel ./msfinstall
+docker exec scalpel ./msfconsole
