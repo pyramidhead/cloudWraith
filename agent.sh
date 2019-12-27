@@ -10,7 +10,6 @@ docker volume inspect backpack
 docker pull mongo:4.0.4
 docker run -d --rm --name legdrop mongo:4.0.4
 docker ps -a
-sleep 1
 mongoHealth="$(docker exec legdrop mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 until [[ $mongoHealth =~ "Implicit" ]]; do
 	sleep 1
@@ -35,6 +34,7 @@ docker ps -a
 metasploitHealth="$(docker exec -i scalpel msfconsole)"
 while [[ -z $metasploitHealth ]]; do
 	sleep 1
+	metasploitHealth="$(docker exec -i scalpel msfconsole)"
 done
 
 # build a node.js container that runs a web interface; call it wristpad
