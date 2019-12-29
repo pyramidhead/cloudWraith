@@ -37,6 +37,8 @@ until [[ $metasploitAppHealth =~ "encoders" ]]; do
 	metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 done
 # health check metasploit db
+metasploitCheck="$(docker exec scalpel msfconsole)"
+echo $metasploitCheck
 metasploitDBRegistryCheck="$(docker exec scalpel msfconsole | grep "No database support")"
 if [[ $metasploitDBRegistryCheck =~ "No database support" ]]; then
 	echo "Metasploit database definition missing. Terminating."; exit 1;
