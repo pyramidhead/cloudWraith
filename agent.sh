@@ -34,12 +34,14 @@ docker ps -a
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do
 	sleep 1
-	metasploitHealth="$(docker exec scalpel msfconsole)"
+	metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 done
 # health check metasploit db
 metasploitDBRegistryCheck="$(docker exec scalpel msfconsole | grep "No database support")"
 if [[ $metasploitDBRegistryCheck =~ "No database support" ]]; then
 	echo "Metasploit database definition missing. Terminating."; exit 1;
+# elif [[ $metasploitDBRegistryCheck =~ "some happy condition" ]]; then
+	# echo "happy db condition statement"
 fi
 
 # build a node.js container that runs a web interface; call it wristpad
