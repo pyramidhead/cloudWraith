@@ -29,5 +29,6 @@ RUN set -x \
     && apt-get -y install apt-utils curl gnupg postgresql postgresql-contrib \
     && apt-get clean \
     && service postgresql start \
+    && service postgresql status \
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall \
     && chmod 755 msfinstall
