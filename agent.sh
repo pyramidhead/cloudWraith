@@ -32,7 +32,7 @@ docker exec -i scalpel ./msfinstall
 # validate container status
 docker ps -a
 # health check metasploit
-metasploitHealth="$(docker exec scalpel msfconsole)"
+metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 echo $metasploitHealth
 # while [[ -z $metasploitHealth ]]; do
 #	sleep 1
