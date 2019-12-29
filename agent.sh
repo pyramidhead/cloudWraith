@@ -36,8 +36,8 @@ until [[ $metasploitAppHealth =~ "encoders" ]]; do
 	sleep 1
 	metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 done
-# msfconsole-start command may initialize database
-docker exec scalpel ./msfconsole-start
+# initialize database
+docker exec scalpel msfdb init
 # health check metasploit db
 metasploitCheck="$(docker exec scalpel msfconsole)"
 echo $metasploitCheck
