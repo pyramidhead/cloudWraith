@@ -46,5 +46,6 @@ fi
 
 # build and validate wristpad
 # initial spec: to start, this needs to present a web interface, allow targeting of a single ip address, and import json data in a useful format into mongo
+# research requirement: how to dockerize a node.js given a simple code example
 
-# build a node.js container that runs our natual language search engine; call it brainpal
+# build a node.js container that runs ournatual language search and prioritization engine; call it brainpal
