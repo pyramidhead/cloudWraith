@@ -36,16 +36,12 @@ until [[ $metasploitAppHealth =~ "encoders" ]]; do
 	sleep 1
 	metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 done
-# initialize database
+# initialize metasploit database
 docker exec scalpel msfdb init
 # health check metasploit db
-metasploitCheck="$(docker exec scalpel msfconsole)"
-echo $metasploitCheck
 metasploitDBRegistryCheck="$(docker exec scalpel msfconsole | grep "No database support")"
 if [[ $metasploitDBRegistryCheck =~ "No database support" ]]; then
 	echo "Metasploit database definition missing. Terminating."; exit 1;
-elif [[ $metasploitDBRegistryCheck =~ "using system database" ]]; then
-	echo "Metasploit database up. Proceeding."
 fi
 
 # build a node.js container that runs a web interface; call it wristpad
