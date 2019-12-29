@@ -34,10 +34,10 @@ docker ps -a
 # health check metasploit
 metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 echo $metasploitHealth
-# while [[ -z $metasploitHealth ]]; do
-#	sleep 1
-#	metasploitHealth="$(docker exec -i scalpel msfconsole)"
-# done
+until [[ $metasploitHealth =~ "encoders" ]]; do
+	sleep 1
+	metasploitHealth="$(docker exec scalpel msfconsole)"
+done
 
 # build a node.js container that runs a web interface; call it wristpad
 
