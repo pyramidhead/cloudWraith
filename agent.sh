@@ -43,6 +43,8 @@ metasploitDBRegistryCheck="$(docker exec scalpel msfconsole | grep "No database 
 if [[ $metasploitDBRegistryCheck =~ "No database support" ]]; then
 	echo "Metasploit database definition missing. Terminating."; exit 1;
 fi
+metasploitDBConsoleCheck="$(docker exec scalpel msfconsole db_status)"
+echo $metasploitDBConsoleCheck
 
 # build a node.js container that runs a web interface; call it wristpad
 
