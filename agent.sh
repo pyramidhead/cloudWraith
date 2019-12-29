@@ -27,17 +27,18 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 # install metasploit
-# possible new try at health check: grep install command for "msfconsole"
 docker exec -i scalpel ./msfinstall
 # validate container status
 docker ps -a
-# health check metasploit
-metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
-echo $metasploitHealth
-until [[ $metasploitHealth =~ "encoders" ]]; do
+# health check metasploit app
+metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
+until [[ $metasploitAppHealth =~ "encoders" ]]; do
 	sleep 1
 	metasploitHealth="$(docker exec scalpel msfconsole)"
 done
+# health check metasploit db
+metasploitDBRegistryCheck="$(docker exec scalpel msfconsole)"
+echo metasploitDBRegistryCheck
 
 # build a node.js container that runs a web interface; call it wristpad
 
