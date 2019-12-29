@@ -38,7 +38,7 @@ until [[ $metasploitAppHealth =~ "encoders" ]]; do
 done
 # health check metasploit db
 metasploitDBRegistryCheck="$(docker exec scalpel msfconsole)"
-echo metasploitDBRegistryCheck
+echo $metasploitDBRegistryCheck
 
 # build a node.js container that runs a web interface; call it wristpad
 
