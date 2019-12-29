@@ -32,7 +32,8 @@ docker exec -i scalpel ./msfinstall
 # validate container status
 docker ps -a
 # health check metasploit
-# metasploitHealth="$(docker exec -i scalpel msfconsole)"
+metasploitHealth="$(docker exec scalpel msfconsole)"
+echo $metasploitHealth
 # while [[ -z $metasploitHealth ]]; do
 #	sleep 1
 #	metasploitHealth="$(docker exec -i scalpel msfconsole)"
