@@ -1,3 +1,3 @@
 FROM mongo:bionic
 # internal health check
-HEALTHCHECK --interval=5s --timeout=5s --retries=12 \ CMD mongo --eval "printjson(db.serverStatus())" --quiet | grep "Implicit"
+HEALTHCHECK --interval=5s --timeout=5s --retries=12 \ CMD mongo --eval "printjson(db.serverStatus())" --quiet | grep "Implicit" || exit 1
