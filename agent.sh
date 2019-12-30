@@ -8,7 +8,7 @@ docker volume inspect backpack
 
 # build and validate mongo container
 docker pull mongo:4.0.4
-docker run -d --rm --name legdrop mongo:4.0.4
+docker run -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name legdrop mongo:4.0.4
 docker ps -a
 mongoHealth="$(docker exec legdrop mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 until [[ $mongoHealth =~ "Implicit" ]]; do
