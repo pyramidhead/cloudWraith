@@ -24,10 +24,10 @@ RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /e
     echo "deb-src http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
 ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
-    && apt-get -yqq update \
-    && apt-get -yqq dist-upgrade \
-    && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev \
-    && apt-get clean \
+    && apt-get -yqq update > /dev/null \
+    && apt-get -yqq dist-upgrade > /dev/null \
+    && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev > /dev/null \
+    && apt-get clean > /dev/null \
     && service postgresql start \
     && service postgresql status \
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall \
