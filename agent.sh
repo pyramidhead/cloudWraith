@@ -24,7 +24,8 @@ docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --na
 docker ps -a
 kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 until [[ $kaliHealth =~ "ID_LIKE" ]]; do
-	sleep 1
+	sleep 10
+	echo "Waiting for goddess Kali to wake up..."
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 # health check metasploit app
