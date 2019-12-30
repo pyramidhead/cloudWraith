@@ -24,21 +24,23 @@ docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --na
 docker ps -a
 kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 until [[ $kaliHealth =~ "ID_LIKE" ]]; do
-	sleep 10
-	echo "goddess Kali has awoken"
+	sleep 3
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
+echo "goddess Kali has awoken"
 # health check metasploit app
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do
-	sleep 1
+	sleep 3
 	metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 done
+echo "goddess Kali has had her metasploit coffee"
 # health check metasploit db
 metasploitDBRegistryCheck="$(docker exec scalpel msfconsole | grep "No database support")"
 if [[ $metasploitDBRegistryCheck =~ "No database support" ]]; then
 	echo "Metasploit database definition missing. Terminating."; exit 1;
 fi
+echo "goddess Kali has done her crossword"
 
 # build and validate wristpad
 # initial spec: to start, this needs to present a web interface, allow targeting of a single ip address, and import json data in a useful format into mongo
