@@ -24,10 +24,11 @@ RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /e
     echo "deb-src http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
 ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
+    && apt-get -yqq install python-software-properties \
     && add-apt-repository bionic \
     && apt-get -yqq update > /dev/null \
     && apt-get -yqq dist-upgrade > /dev/null \
-    && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev > /dev/null \
+    &&  apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev > /dev/null \
     && apt-get clean > /dev/null \
     && service postgresql start \
     && service postgresql status \
