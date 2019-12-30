@@ -25,7 +25,8 @@ RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /e
 ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
     && apt-get -y update \
-    && apt-get -y dist-upgrade apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev \
+    && apt-get -y dist-upgrade
+    && apt-get -y install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev \
     && apt-get clean \
     && service postgresql start \
     && service postgresql status \
