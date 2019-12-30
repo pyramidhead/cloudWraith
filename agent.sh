@@ -27,16 +27,12 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	sleep 1
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
-# validate container status
-docker ps -a
 # health check metasploit app
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do
 	sleep 1
 	metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 done
-# initialize metasploit database
-docker exec scalpel msfdb init
 # health check metasploit db
 metasploitDBRegistryCheck="$(docker exec scalpel msfconsole | grep "No database support")"
 if [[ $metasploitDBRegistryCheck =~ "No database support" ]]; then
