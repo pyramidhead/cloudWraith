@@ -36,5 +36,5 @@ RUN set -x \
     && gem install bundler; bundle \
     && service postgresql restart \
     && service postgresql status \
-    && ls -alh /opt/metasploit-framework/bin/ \
-    && /opt/metasploit-framework/bin/msfdb init
+    && ls -alh /opt/metasploit-framework/ \
+    && /opt/metasploit-framework/msfdb init
