@@ -31,6 +31,4 @@ RUN set -x \
     && service postgresql start \
     && service postgresql status \
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall \
-    && chmod 755 msfinstall \
-    && ./msfinstall \
-    && ./msfdb init
+    && chmod 755 msfinstall

@@ -8,9 +8,7 @@ docker volume inspect backpack
 
 # build and validate mongo container
 docker image build -t drawer ./mongo
-docker inspect drawer
 docker run -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name legdrop drawer
-docker ps -a
 mongoHealth="$(docker exec legdrop mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 until [[ $mongoHealth =~ "Implicit" ]]; do
 	sleep 1
@@ -19,15 +17,16 @@ done
 
 # build and validate kali container
 docker image build -t drawer ./kali
-docker inspect drawer
 docker run -t -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name scalpel drawer
-docker ps -a
 kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	sleep 3
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 echo "goddess Kali has awoken"
+# metasploit install is resistant to being dockerized
+docker exec scalpel msfinstall
+docker exec scalpel msfdb init
 # health check metasploit app
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do
