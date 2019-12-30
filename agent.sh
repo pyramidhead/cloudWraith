@@ -25,7 +25,7 @@ docker ps -a
 kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	sleep 10
-	echo "Waiting for goddess Kali to wake up..."
+	echo "goddess Kali has awoken"
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 # health check metasploit app
