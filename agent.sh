@@ -25,8 +25,8 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 done
 echo "goddess Kali has awoken"
 # metasploit install is resistant to being dockerized
-docker exec scalpel msfinstall
-docker exec scalpel msfdb init
+docker exec scalpel ./msfinstall
+docker exec scalpel ./msfdb init
 # health check metasploit app
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do
