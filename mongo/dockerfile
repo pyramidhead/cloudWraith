@@ -1,1 +1,3 @@
 FROM mongo:bionic
+# internal health check
+HEALTHCHECK --interval=5s --timeout=5s \ mongo --eval "printjson(db.serverStatus())"
