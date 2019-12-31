@@ -26,19 +26,19 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
-    && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev git \
+    && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev git > /dev/null \
     && apt-get clean \
     && service postgresql start \
     && service postgresql status \
-    # having created test Gemfile, install it from the git repo here
     && mkdir cloudWraith \
+    # need to figure out how to authenticate to github in this dockerfile
     && git clone git@github.com:pyramidhead/cloudWraith.git cloudWraith \
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall \
     && chmod 755 msfinstall \
     && ./msfinstall \
     # this command needs to test for success
-    && msfconsole \
     && gem install bundler; bundle \
+    && msfconsole \
     && service postgresql restart \
     && service postgresql status \
     && ls -alh /opt/metasploit-framework/
