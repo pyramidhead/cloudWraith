@@ -34,7 +34,7 @@ RUN set -x \
     && chmod 755 msfinstall \
     && ./msfinstall \
     # we need an msfconsole test here \
-    && ./msfconsole \
+    && msfconsole \
     && gem install bundler; bundle \
     && service postgresql restart \
     && service postgresql status \
