@@ -24,7 +24,7 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 echo "goddess Kali has awoken"
-# may need to move some of metasploit build back to shell, it's not working in dockerfile
+# may need to move some of metasploit build back to shell, file system writes from dockerfile appear not to persist, do that one step at a time
 # health check metasploit app
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do
