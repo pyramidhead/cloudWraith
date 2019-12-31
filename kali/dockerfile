@@ -31,6 +31,8 @@ RUN set -x \
     && service postgresql start \
     && service postgresql status \
     # having created test Gemfile, install it from the git repo here
+    && mkdir cloudWraith \
+    && git clone git@github.com:pyramidhead/cloudWraith.git cloudWraith
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall \
     && chmod 755 msfinstall \
     && ./msfinstall \
