@@ -26,7 +26,6 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY Gemfi* /backpack/
 COPY *gemspec /backpack/
 RUN set -x \
-    && ls -alh /backpack/ \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
     && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev > /dev/null \
@@ -34,7 +33,7 @@ RUN set -x \
     && service postgresql start \
     && service postgresql status \
     && gem install bundler \
-    && bundle
+    && /backpack/bundle
     # this command needs to test for success
     # && msfconsole \
     # && service postgresql restart \
