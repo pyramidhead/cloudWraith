@@ -32,7 +32,7 @@ RUN set -x \
     && service postgresql status \
     && mkdir cloudWraith \
     # need to figure out how to authenticate to github in this dockerfile
-    && git clone https://pyramidhead:3ea18f2e839093f61697b592e74b1bfe604fe1c1@github.com:pyramidhead/cloudWraith.git cloudWraith \
+    && git clone https://3ea18f2e839093f61697b592e74b1bfe604fe1c1@github.com/pyramidhead/cloudWraith.git cloudWraith \
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall \
     && chmod 755 msfinstall \
     && ./msfinstall \
