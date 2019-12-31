@@ -8,7 +8,7 @@ docker volume inspect backpack
 
 # build and validate mongo container
 docker image build -t drawer ./mongo
-docker run -d --rm --mount source=backpack,target=/usr/local/cloudWraith --name legdrop drawer
+docker run -d --rm --mount source=backpack,target=/cloudWraith --name legdrop drawer
 mongoHealth="$(docker exec legdrop mongo --eval "printjson(db.serverStatus())" | grep "Implicit")"
 until [[ $mongoHealth =~ "Implicit" ]]; do
 	sleep 1
@@ -17,14 +17,14 @@ done
 
 # build and validate kali container
 docker image build -t drawer ./kali
-docker run -t -d --rm --name scalpel drawer
+docker run -t -d --rm --mount source=backpack,target=/cloudWraith --name scalpel drawer
 kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	sleep 3
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 echo "goddess Kali has awoken"
-# may need to move some of metasploit build back to shell, file system writes from dockerfile appear not to persist, do that one step at a time
+# got bundler reading gemfile from dockerfile, not sure whether we will be able to move the rest of this back
 docker exec scalpel curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
 docker exec scalpel chmod 755 msfinstall
 docker exec scalpel ./msfinstall
