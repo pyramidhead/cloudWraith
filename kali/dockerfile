@@ -33,7 +33,9 @@ RUN set -x \
     && service postgresql start \
     && service postgresql status \
     && gem install bundler \
-    && /backpack/bundle
+    && cd backpack \
+    && bundle \
+    && cd ..
     # this command needs to test for success
     # && msfconsole \
     # && service postgresql restart \
