@@ -39,6 +39,3 @@ RUN set -x \
     # && service postgresql status \
     # && ls -alh /opt/metasploit-framework/ \
     # && /opt/metasploit-framework/msfdb init
-
-# github token readonly 3ea18f2e839093f61697b592e74b1bfe604fe1c1
-# github token fullaccess ea466df8e813571dffec4a631ff95bada461de58
