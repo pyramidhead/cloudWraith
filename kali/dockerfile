@@ -34,6 +34,7 @@ RUN set -x \
     && service postgresql status \
     && gem install bundler \
     && cd backpack \
+    && ls -alh /backpack/ \
     && bundle \
     && cd ..
     # this command needs to test for success
