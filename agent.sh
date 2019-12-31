@@ -25,6 +25,9 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 done
 echo "goddess Kali has awoken"
 # may need to move some of metasploit build back to shell, file system writes from dockerfile appear not to persist, do that one step at a time
+docker exec scalpel curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+docker exec scalpel chmod 755 msfinstall
+docker exec scalpel ./msfinstall
 # health check metasploit app
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do

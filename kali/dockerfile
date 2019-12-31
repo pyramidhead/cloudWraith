@@ -30,11 +30,6 @@ RUN set -x \
     && apt-get clean \
     && service postgresql start \
     && service postgresql status \
-    && mkdir cloudWraith \
-    # && git clone https://ea466df8e813571dffec4a631ff95bada461de58:x-oauth-basic@github.com/pyramidhead/cloudWraith.git cloudWraith \
-    && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall \
-    && chmod 755 msfinstall \
-    && ./msfinstall \
     && gem install bundler; bundle # \
     # this command needs to test for success
     # && msfconsole \
