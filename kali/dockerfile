@@ -31,7 +31,8 @@ RUN set -x \
     && apt-get clean \
     && service postgresql start \
     && service postgresql status \
-    && gem install bundler; bundle > /dev/null 
+    && gem install bundler \
+    && bundle 
     # this command needs to test for success
     # && msfconsole \
     # && service postgresql restart \
