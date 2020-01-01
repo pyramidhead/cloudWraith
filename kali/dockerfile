@@ -35,7 +35,7 @@ RUN set -x \
     && gem install bundler --no-rdoc --no-ri \
     && cd backpack \
     && ls -alh /backpack/ \
-    && bundle \
+    && bundle install \
     && cd ..
     # this command needs to test for success
     # && msfconsole \
