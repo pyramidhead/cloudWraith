@@ -32,7 +32,7 @@ RUN set -x \
     && apt-get clean \
     && service postgresql start \
     && service postgresql status \
-    && gem install bundler \
+    && gem install bundler --no-rdoc --no-ri \
     && cd backpack \
     && ls -alh /backpack/ \
     && bundle \
