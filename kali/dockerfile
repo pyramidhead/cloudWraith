@@ -40,7 +40,9 @@ RUN set -x \
     && export PATH="$PATH:/backpack" \
     && ls -alh /backpack/ \
     && echo $PATH \
-    && /backpack/bundle install
+    && cd backpack \
+    && bundle install \
+    && cd ..
     # this command needs to test for success
     # && msfconsole \
     # && service postgresql restart \
