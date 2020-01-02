@@ -37,7 +37,7 @@ RUN set -x \
     && gem install bundler --no-rdoc --no-ri \
     && bundle config --global silence_root_warning 1 \
     && sleep 1 \
-    && export PATH="$PATH:/backpack"
+    && export PATH="$PATH:/backpack" \
     && ls -alh /backpack/ \
     && echo $PATH
     # this command needs to test for success
