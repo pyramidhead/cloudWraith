@@ -39,7 +39,7 @@ RUN set -x \
     && export PATH="$PATH:/backpack" \
     && echo $PATH \
     && cd backpack; bundle install; cd .. \
-    && git clone https://github.com/rapid8/metasploit-framework.git > /backpack/msf
+    && git clone https://github.com/rapid7/metasploit-framework.git > /backpack/msf
     # && chmod 755 /backpack/msfinstall \
     # && /backpack/msfinstall; /backpack/msfdb init \
     # && service postgresql restart \
