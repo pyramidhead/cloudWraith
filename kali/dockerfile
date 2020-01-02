@@ -30,10 +30,14 @@ RUN set -x \
     && apt-get -yqq dist-upgrade \
     && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev > /dev/null \
     && apt-get clean \
+    && sleep 1 \
     && service postgresql start \
     && service postgresql status \
+    && sleep 1 \
     && gem install bundler --no-rdoc --no-ri \
     && bundle config --global silence_root_warning 1 \
+    && sleep 1 \
+    && export PATH="$PATH:/backpack"
     && ls -alh /backpack/ \
     && echo $PATH
     # this command needs to test for success
