@@ -33,11 +33,8 @@ RUN set -x \
     && service postgresql start \
     && service postgresql status \
     && gem install bundler --no-rdoc --no-ri \
-    && cd backpack \
-    && ls -alh /backpack/ \
     && bundle config --global silence_root_warning 1 \
-    && bundle install \
-    && cd ..
+    && ls -alh /backpack/
     # this command needs to test for success
     # && msfconsole \
     # && service postgresql restart \
