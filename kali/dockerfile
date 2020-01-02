@@ -43,6 +43,7 @@ RUN set -x \
     && echo $PATH \
     && cd backpack; bundle install; cd .. \
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > /backpack/msfinstall \
+    && chmod 755 /backpack/msfinstall \
     && ls -alh /backpack/
     # this command needs to test for success
     # && msfconsole \
