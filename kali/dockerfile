@@ -35,6 +35,7 @@ RUN set -x \
     && gem install bundler --no-rdoc --no-ri \
     && cd backpack \
     && ls -alh /backpack/ \
+    && bundle config --global silence_root_warning 1 \
     && bundle install \
     && cd ..
     # this command needs to test for success
