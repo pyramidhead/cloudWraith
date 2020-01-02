@@ -24,12 +24,7 @@ RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /e
     echo "deb-src http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
 COPY Gemfi* /backpack/
 COPY *gemspec /backpack/
-ENV DEBIAN_FRONTEND noninteractive \
-  BUNDLE_GEMFILE=/backpack/Gemfile \
-  BUNDLE_JOBS=2 \
-  BUNDLE_PATH=/backpack \
-  GEM_PATH=/backpack \
-  GEM_HOME=/backpack
+ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
