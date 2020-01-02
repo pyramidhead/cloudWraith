@@ -1,4 +1,2 @@
 source 'https://rubygems.org'
 ruby "1.9.3"
-gemspec :name => 'metasploit-framework.gemspec'
-gemspec :path => './'
