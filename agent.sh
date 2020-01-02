@@ -24,8 +24,6 @@ until [[ $kaliHealth =~ "ID_LIKE" ]]; do
 	kaliHealth="$(docker exec scalpel cat /etc/os-release | grep "ID_LIKE")"
 done
 echo "goddess Kali has awoken"
-# got bundler reading gemfile from dockerfile, not sure whether we will be able to move the rest of this back
-# docker exec scalpel ./msfinstall
 # health check metasploit app
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do
