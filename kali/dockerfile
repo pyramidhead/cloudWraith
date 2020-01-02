@@ -1,8 +1,10 @@
 FROM kalilinux/kali-rolling
+MAINTAINER pyramid
 ARG BUILD_DATE
 ARG VERSION
 ARG VCS_URL
 ARG VCS_REF
+WORKDIR /backpack
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
