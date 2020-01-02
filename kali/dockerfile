@@ -39,7 +39,6 @@ RUN set -x \
     && cd backpack; bundle install; cd .. \
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > /backpack/msfinstall \
     && chmod 755 /backpack/msfinstall \
-    && /backpack/msfinstall \
+    && /backpack/msfinstall; /backpack/msfdb init \
     && service postgresql restart \
-    && service postgresql status \
-    && cd backpack; msfdb init; cd ..
+    && service postgresql status
