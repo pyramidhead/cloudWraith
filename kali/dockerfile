@@ -42,4 +42,4 @@ RUN set -x \
     && /backpack/msfinstall \
     && service postgresql restart \
     && service postgresql status \
-    && msfdb init
+    && cd backpack; msfdb init; cd ..
