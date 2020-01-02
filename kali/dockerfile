@@ -34,7 +34,8 @@ RUN set -x \
     && service postgresql status \
     && gem install bundler --no-rdoc --no-ri \
     && bundle config --global silence_root_warning 1 \
-    && ls -alh /backpack/
+    && ls -alh /backpack/ \
+    && echo $PATH
     # this command needs to test for success
     # && msfconsole \
     # && service postgresql restart \
