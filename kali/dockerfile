@@ -25,6 +25,7 @@ RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" > /e
 ENV DEBIAN_FRONTEND noninteractive
 COPY Gemfi* /backpack/
 COPY *gemspec /backpack/
+ADD Gemfile metasploit-framework.gemspec /backpack/
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
