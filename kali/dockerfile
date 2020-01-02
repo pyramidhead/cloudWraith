@@ -33,8 +33,7 @@ ENV DEBIAN_FRONTEND noninteractive \
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
-    && apt-get -yqq install apt-utils > /dev/null \
-    && apt-get -yqq install curl gnupg postgresql postgresql-contrib rubygems ruby-dev > /dev/null \
+    && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev > /dev/null \
     && apt-get clean \
     && service postgresql start \
     && service postgresql status \
