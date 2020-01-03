@@ -33,13 +33,13 @@ RUN set -x \
     && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev systemd metasploit-framework > /dev/null \
     && rm -rf /lib/systemd/system/multi-user.target.wants/ \
     && apt-get clean \
-    && service postgresql start \
-    && service postgresql status \
-    && gem install bundler --no-rdoc --no-ri \
-    && bundle config --global silence_root_warning 1 \
-    && export PATH="$PATH:/backpack" \
-    && echo $PATH \
-    && bundle install \
+    # && service postgresql start \
+    # && service postgresql status \
+    # && gem install bundler --no-rdoc --no-ri \
+    # && bundle config --global silence_root_warning 1 \
+    # && export PATH="$PATH:/backpack" \
+    # && echo $PATH \
+    # && bundle install \
     # && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > /backpack/msfinstall > /dev/null \
     # && chmod 755 /backpack/msfinstall \
     # && /backpack/msfinstall \
