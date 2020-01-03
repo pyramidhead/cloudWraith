@@ -31,7 +31,7 @@ RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
     && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev systemd metasploit-framework > /dev/null \
-    && rm -f /lib/systemd/system/multi-user.target.wants/ \
+    && rm -rf /lib/systemd/system/multi-user.target.wants/ \
     && apt-get clean \
     && service postgresql start \
     && service postgresql status \
