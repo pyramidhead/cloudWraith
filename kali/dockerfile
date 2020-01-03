@@ -31,8 +31,8 @@ RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
     && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev systemd metasploit-framework > /dev/null \
-    && cd /lib/systemd/system/sysinit.target.wants/; for i in ; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done \
-    && rm -rf /lib/systemd/system/multi-user.target.wants/ \
+    && cd /lib/systemd/system/sysinit.target.wants/; for i in ; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; cd ./; done \
+    && rm -rf /lib/systemd/system/multi-user.target.wants/; rm -rf /etc/systemd/system/.wants/; \
     && apt-get clean \
     # && service postgresql start \
     # && service postgresql status \
