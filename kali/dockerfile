@@ -30,7 +30,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
-    && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev systemd-sysvcompat metasploit-framework > /dev/null \
+    && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev systemd metasploit-framework > /dev/null \
     && cd /lib/systemd/system/sysinit.target.wants/; for i in ; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; cd ./; done \
     && rm -rf /lib/systemd/system/multi-user.target.wants/; rm -rf /etc/systemd/system/.wants/; rm -rf /lib/systemd/system/local-fs.target.wants/; rm -rf /lib/systemd/system/sockets.target.wants/udev; rm -rf /lib/systemd/system/sockets.target.wants/initctl; rm -rf /lib/systemd/system/basic.target.wants/; rm -f /lib/systemd/system/anaconda.target.wants/* \
     && apt-get clean \
