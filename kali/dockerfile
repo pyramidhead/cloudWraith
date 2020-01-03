@@ -38,7 +38,7 @@ RUN set -x \
     && bundle config --global silence_root_warning 1 \
     && export PATH="$PATH:/backpack" \
     && echo $PATH \
-    && cd backpack; bundle install; cd .. \
+    && bundle install \
     && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > /backpack/msfinstall > /dev/null \
     && chmod 755 /backpack/msfinstall \
     && /backpack/msfinstall \
