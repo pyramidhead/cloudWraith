@@ -39,7 +39,7 @@ RUN set -x \
     && bundle config --global silence_root_warning 1 \
     && export PATH="$PATH:/backpack" \
     && echo $PATH \
-    && cd backpack; bundle install; cd .. \
+    && bundle install \
     && git clone https://github.com/rapid7/metasploit-framework.git > /backpack/msf
     # && chmod 755 /backpack/msfinstall \
     # && /backpack/msfinstall; /backpack/msfdb init \
