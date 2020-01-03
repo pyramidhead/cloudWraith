@@ -31,6 +31,7 @@ RUN set -x \
     && apt-get -yqq update \
     && apt-get -yqq dist-upgrade \
     && apt-get -yqq install apt-utils curl gnupg postgresql postgresql-contrib rubygems ruby-dev > /dev/null \
+    && apt-get -y install metasploit-framework \
     && apt-get clean \
     && service postgresql start \
     && service postgresql status \
@@ -39,9 +40,9 @@ RUN set -x \
     && export PATH="$PATH:/backpack" \
     && echo $PATH \
     && bundle install \
-    && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > /backpack/msfinstall > /dev/null \
-    && chmod 755 /backpack/msfinstall \
-    && /backpack/msfinstall \
+    # && curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > /backpack/msfinstall > /dev/null \
+    # && chmod 755 /backpack/msfinstall \
+    # && /backpack/msfinstall \
     && service postgresql restart \
     && service postgresql status \
     && msfdb init
