@@ -30,7 +30,7 @@ until [[ $metasploitAppHealth =~ "encoders" ]]; do
 	sleep 3
 	metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 done
-echo "goddess Kali has had her metasploit coffee"
+echo "goddess Kali has had her coffee"
 # health check metasploit db
 metasploitDBRegistryCheck="$(docker exec scalpel msfconsole | grep "No database support")"
 if [[ $metasploitDBRegistryCheck =~ "No database support" ]]; then
@@ -42,4 +42,4 @@ echo "goddess Kali has done her crossword"
 # initial spec: to start, this needs to present a web interface, allow targeting of a single ip address, and import json data in a useful format into mongo
 # research requirement: how to dockerize a node.js given a simple code example
 
-# build a node.js container that runs ournatual language search and prioritization engine; call it brainpal
+# build a node.js container that runs our natural language search and prioritization engine; call it brainpal
