@@ -28,7 +28,7 @@ echo "goddess Kali has awoken"
 metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 until [[ $metasploitAppHealth =~ "encoders" ]]; do
 	sleep 3
-	metasploitHealth="$(docker exec scalpel msfconsole | grep "encoders")"
+	metasploitAppHealth="$(docker exec scalpel msfconsole | grep "encoders")"
 done
 echo "goddess Kali has had her coffee"
 # health check metasploit db
